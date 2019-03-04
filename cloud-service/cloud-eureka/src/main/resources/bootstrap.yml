@@ -1,0 +1,48 @@
+#服务端口
+server:
+  port: 1000
+  application:
+    name: eureka
+
+eureka:
+  instance:
+    prefer-ip-address: true     #以IP注册到注册中心
+    hostname: zhihui-eureka
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+    registerWithEureka: false  # 是否在eureka服务器上注册自己
+    fetchRegistry: false       # 是否获取eureka服务器注册表上的注册信息
+
+# 公共配置
+spring:
+  profiles:
+    active: dev
+  application:
+    name: zhihui-eureka
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator   #服务器信息
+      exposure:
+        include: '*'
+  endpoint:
+    health:         #显示应用健康信息。
+      show-details: ALWAYS
+      enabled: true
+    shutdown:
+      enabled: true     #/actuator/shutdown来关闭应用.POST
+
+#日志配置
+logging:
+  path: ./logs/zhihui-eureka
+  file: ${logging.path}/root.log
+  common-pattern: '%d{yyyy-MM-dd HH:mm:ss.SSS}:[%5p] [%t:%r] [%C{1}:%M:%L] --> %m%n'
+  level:
+    console: ERROR

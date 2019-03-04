@@ -1,0 +1,8 @@
+*.iml
+.idea/
+cloud-auth/auth-server/target/
+cloud-service/cloud-eureka/target/
+logs/
+cloud-common/target/
+cloud-auth/auth-common/target/
+cloud-gateway/cloud-gateway-server/target/
