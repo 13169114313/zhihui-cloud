@@ -6,3 +6,4 @@ logs/
 cloud-common/target/
 cloud-auth/auth-common/target/
 cloud-gateway/cloud-gateway-server/target/
+cloud-services/cloud-eureka/target/
